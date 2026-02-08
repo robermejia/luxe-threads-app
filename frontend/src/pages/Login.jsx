@@ -100,9 +100,13 @@ const Login = () => {
             </div>
             
             <div className="grid grid-cols-2 gap-4">
-              <button className="flex items-center justify-center gap-2 bg-slate-50 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-sm font-medium py-3 rounded-xl transition-colors">
+              <button 
+                onClick={() => loginWithGoogle()}
+                disabled={loading}
+                className="flex items-center justify-center gap-2 bg-slate-50 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-sm font-medium py-3 rounded-xl transition-colors disabled:opacity-50"
+              >
                 <img src="https://www.svgrepo.com/show/475656/google-color.svg" className="size-5" alt="Google" />
-                <span>Google</span>
+                <span>{loading ? '...' : 'Google'}</span>
               </button>
               <button className="flex items-center justify-center gap-2 bg-slate-50 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white text-sm font-medium py-3 rounded-xl transition-colors">
                 <img src="https://www.svgrepo.com/show/512317/github-142.svg" className="size-5 dark:invert" alt="GitHub" />

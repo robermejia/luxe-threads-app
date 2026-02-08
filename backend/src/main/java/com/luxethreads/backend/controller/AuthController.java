@@ -12,7 +12,6 @@ import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = { "http://localhost:5173", "http://192.168.18.11:5173" })
 public class AuthController {
 
     private final UserFirestoreService userService;

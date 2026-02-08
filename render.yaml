@@ -2,11 +2,12 @@ services:
   # Backend: Spring Boot Web Service
   - type: web
     name: luxethreads-backend
-    env: docker
+    runtime: docker
     plan: free
     region: oregon
-    dockerContext: backend
-    dockerfilePath: backend/Dockerfile
+    rootDir: backend
+    dockerContext: .
+    dockerfilePath: Dockerfile
     envVars:
       - key: PORT
         value: 8080
@@ -14,11 +15,12 @@ services:
   # Frontend: Vite Static Site
   - type: static
     name: luxethreads-frontend
-    env: static
+    runtime: static
     plan: free
     region: oregon
+    rootDir: frontend
     buildCommand: npm install && npm run build
-    staticPublishPath: frontend/dist
+    staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
         fromService:

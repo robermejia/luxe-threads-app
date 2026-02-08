@@ -15,6 +15,13 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Verificar si las variables de entorno de Firebase están presentes
+    if (!import.meta.env.VITE_FIREBASE_API_KEY) {
+      console.error("Firebase API Key is missing! Check your environment variables.");
+    }
+  }, []);
+
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
         const userData = {

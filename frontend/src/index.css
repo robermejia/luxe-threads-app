@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-display antialiased;
+  }
+}
+
+.glass-panel {
+  background: rgba(16, 22, 34, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-glow {
+  box-shadow: 0 0 15px rgba(19, 91, 236, 0.4);
+}

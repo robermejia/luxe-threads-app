@@ -15,7 +15,7 @@ services:
   # Frontend: Vite Static Site
   - type: static
     name: luxethreads-frontend
-    runtime: static
+    env: static
     plan: free
     region: oregon
     rootDir: frontend

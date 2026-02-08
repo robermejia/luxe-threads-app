@@ -16,7 +16,12 @@ const Catalog = () => {
 
   const fetchProducts = () => {
     setLoading(true);
-    let url = `${import.meta.env.VITE_API_URL}/api/products?category=${category}&search=${search}`;
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const formattedBaseUrl = apiUrl.startsWith('http') ? apiUrl : `https://${apiUrl}`;
+    let url = `${formattedBaseUrl}/api/products?category=${category}&search=${search}`;
+    
+    console.log('Fetching products from:', url);
+
     if (priceRange[0] > 0) url += `&minPrice=${priceRange[0]}`;
     if (priceRange[1] < 1000) url += `&maxPrice=${priceRange[1]}`;
 

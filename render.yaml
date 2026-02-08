@@ -21,7 +21,4 @@ services:
     staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
-        fromService:
-          name: luxethreads-backend
-          type: web
-          property: host
+        value: https://luxethreads-backend.onrender.com

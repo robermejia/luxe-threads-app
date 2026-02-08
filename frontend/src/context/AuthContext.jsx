@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
     const savedUser = localStorage.getItem('luxe-threads-user');
     return savedUser ? JSON.parse(savedUser) : null;
   });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -62,7 +62,10 @@ export const AuthProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const formattedUrl = apiUrl.startsWith('http') ? apiUrl : `https://${apiUrl}`;
+      
+      const response = await fetch(`${formattedUrl}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

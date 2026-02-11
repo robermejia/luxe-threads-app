@@ -127,46 +127,54 @@ const Catalog = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {products.map(product => (
-            <div key={product.id} className="group relative flex flex-col bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300">
-              <div className="relative aspect-[4/5] overflow-hidden bg-slate-100 dark:bg-slate-800">
-                <img 
-                  src={product.image} 
-                  alt={product.name} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                {product.tag && (
-                  <div className={`absolute top-3 left-3 text-white text-[10px] font-bold px-2 py-1 rounded uppercase ${product.tag === 'Oferta' ? 'bg-red-500' : 'bg-primary'}`}>
-                    {product.tag}
-                  </div>
-                )}
-                <button className="absolute top-3 right-3 h-9 w-9 bg-white/80 dark:bg-slate-900/80 backdrop-blur rounded-full flex items-center justify-center text-slate-400 hover:text-red-500 transition-colors">
-                  <span className="material-symbols-outlined text-xl">favorite</span>
-                </button>
-              </div>
-              <div className="p-4 flex flex-col flex-1">
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-tighter mb-1">{product.category}</p>
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1 leading-tight group-hover:text-primary transition-colors">
-                  {product.name}
-                </h3>
-                <p className="text-[10px] text-slate-400 mb-2 uppercase tracking-tight font-medium">Stock disponible: {product.stock || 0}</p>
-                <div className="mt-auto flex items-center justify-between gap-2">
-                  <div className="flex flex-col">
-                    {product.oldPrice && <span className="text-xs text-slate-400 line-through">${product.oldPrice}.00</span>}
-                    <span className={`text-lg font-extrabold ${product.oldPrice ? 'text-red-500' : 'text-slate-900 dark:text-white'}`}>
-                      ${product.price}.00
-                    </span>
-                  </div>
-                  <button 
-                    onClick={() => addToCart(product)}
-                    className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-xl text-sm font-bold transition-all transform active:scale-95 shadow-lg shadow-primary/20"
-                  >
-                    <span className="material-symbols-outlined text-lg">add_shopping_cart</span> Añadir
+          {loading ? (
+            <div className="col-span-full flex flex-col items-center justify-center py-20 animate-pulse">
+              <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+              <p className="text-slate-500 font-medium">Cargando colección...</p>
+              <p className="text-xs text-slate-400 mt-2">El servidor se está "despertando", esto puede tardar unos segundos en Render Free Tier.</p>
+            </div>
+          ) : (
+            products.map(product => (
+              <div key={product.id} className="group relative flex flex-col bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-2xl hover:shadow-primary/5 transition-all duration-300">
+                <div className="relative aspect-[4/5] overflow-hidden bg-slate-100 dark:bg-slate-800">
+                  <img 
+                    src={product.image} 
+                    alt={product.name} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  {product.tag && (
+                    <div className={`absolute top-3 left-3 text-white text-[10px] font-bold px-2 py-1 rounded uppercase ${product.tag === 'Oferta' ? 'bg-red-500' : 'bg-primary'}`}>
+                      {product.tag}
+                    </div>
+                  )}
+                  <button className="absolute top-3 right-3 h-9 w-9 bg-white/80 dark:bg-slate-900/80 backdrop-blur rounded-full flex items-center justify-center text-slate-400 hover:text-red-500 transition-colors">
+                    <span className="material-symbols-outlined text-xl">favorite</span>
                   </button>
                 </div>
+                <div className="p-4 flex flex-col flex-1">
+                  <p className="text-xs font-bold text-slate-400 uppercase tracking-tighter mb-1">{product.category}</p>
+                  <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1 leading-tight group-hover:text-primary transition-colors">
+                    {product.name}
+                  </h3>
+                  <p className="text-[10px] text-slate-400 mb-2 uppercase tracking-tight font-medium">Stock disponible: {product.stock || 0}</p>
+                  <div className="mt-auto flex items-center justify-between gap-2">
+                    <div className="flex flex-col">
+                      {product.oldPrice && <span className="text-xs text-slate-400 line-through">${product.oldPrice}.00</span>}
+                      <span className={`text-lg font-extrabold ${product.oldPrice ? 'text-red-500' : 'text-slate-900 dark:text-white'}`}>
+                        ${product.price}.00
+                      </span>
+                    </div>
+                    <button 
+                      onClick={() => addToCart(product)}
+                      className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-xl text-sm font-bold transition-all transform active:scale-95 shadow-lg shadow-primary/20"
+                    >
+                      <span className="material-symbols-outlined text-lg">add_shopping_cart</span> Añadir
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </section>
 

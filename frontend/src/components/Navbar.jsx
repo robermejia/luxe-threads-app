@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
@@ -6,6 +6,7 @@ import { useAuth } from '../context/AuthContext';
 const Navbar = () => {
   const { totalItems } = useCart();
   const { user, logout } = useAuth();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-4">
@@ -19,7 +20,7 @@ const Navbar = () => {
           </Link>
         </div>
         
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           <Link to="/" className="text-sm font-semibold hover:text-primary transition-colors">Catálogo</Link>
           <Link to="/about" className="text-sm font-semibold hover:text-primary transition-colors">Nosotros</Link>
           <Link to="/contact" className="text-sm font-semibold hover:text-primary transition-colors">Contacto</Link>
@@ -49,8 +50,28 @@ const Navbar = () => {
               <span className="material-symbols-outlined text-slate-500">person</span>
             </Link>
           )}
+
+          {/* Menú Hamburguesa Toggle (Móvil y Tablet) */}
+          <button 
+            className="lg:hidden p-2 text-slate-500 dark:text-slate-400 hover:text-primary transition-colors focus:outline-none flex items-center justify-center"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            title="Abrir Menú"
+          >
+            <span className="material-symbols-outlined text-3xl">
+              {isMobileMenuOpen ? 'close' : 'menu'}
+            </span>
+          </button>
         </div>
       </div>
+
+      {/* Menú Móvil Desplegable */}
+      {isMobileMenuOpen && (
+        <nav className="lg:hidden mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-4 animate-in slide-in-from-top-4 fade-in duration-200">
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-semibold hover:text-primary transition-colors px-2 block">Catálogo</Link>
+          <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-semibold hover:text-primary transition-colors px-2 block">Nosotros</Link>
+          <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-semibold hover:text-primary transition-colors px-2 block">Contacto</Link>
+        </nav>
+      )}
     </header>
   );
 };

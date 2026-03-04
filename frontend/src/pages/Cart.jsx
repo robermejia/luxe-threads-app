@@ -33,7 +33,7 @@ const Cart = () => {
   }
 
   return (
-    <div className="max-w-[1440px] mx-auto px-6 md:px-10 lg:px-20 py-10 w-full">
+    <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-20 py-10 w-full">
       <nav className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-8">
         <a href="/" className="hover:text-primary">Inicio</a>
         <span className="material-symbols-outlined text-xs">chevron_right</span>
@@ -49,40 +49,42 @@ const Cart = () => {
 
           <div className="flex flex-col gap-4">
             {cart.map(item => (
-              <div key={item.id} className="group relative flex flex-col md:flex-row gap-6 items-center bg-white dark:bg-slate-900/30 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-primary/20 transition-all">
+              <div key={item.id} className="group relative flex flex-col md:flex-row gap-4 sm:gap-6 items-center text-center md:text-left bg-white dark:bg-slate-900/30 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 hover:border-primary/20 transition-all">
                 <div className="size-24 md:size-32 flex-shrink-0 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800">
                   <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 flex flex-col gap-1">
                   <h3 className="text-lg font-bold">{item.name}</h3>
-                  <div className="flex gap-2 mt-1">
+                  <div className="flex justify-center md:justify-start gap-2 mt-1">
                     <span className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-bold uppercase">Categoría: {item.category}</span>
                   </div>
                   <button 
                     onClick={() => removeFromCart(item.id)}
-                    className="mt-4 flex items-center gap-1 text-xs text-red-500 hover:text-red-600 font-semibold transition-colors"
+                    className="mt-2 md:mt-4 flex items-center justify-center md:justify-start gap-1 text-xs text-red-500 hover:text-red-600 font-semibold transition-colors"
                   >
                     <span className="material-symbols-outlined text-sm">delete</span> Eliminar
                   </button>
                 </div>
-                <div className="flex items-center border border-slate-200 dark:border-slate-800 rounded-lg overflow-hidden">
-                  <button 
-                    onClick={() => updateQuantity(item.id, -1)}
-                    className="px-3 py-1 hover:bg-slate-50 dark:hover:bg-slate-800"
-                  >
-                    <span className="material-symbols-outlined text-sm">remove</span>
-                  </button>
-                  <span className="w-8 text-center text-sm font-bold">{item.quantity}</span>
-                  <button 
-                    onClick={() => updateQuantity(item.id, 1)}
-                    className="px-3 py-1 hover:bg-slate-50 dark:hover:bg-slate-800"
-                  >
-                    <span className="material-symbols-outlined text-sm">add</span>
-                  </button>
-                </div>
-                <div className="text-right min-w-[100px]">
-                  <p className="text-lg font-bold">${item.price * item.quantity}.00</p>
-                  <p className="text-xs text-slate-400">${item.price}.00 c/u</p>
+                <div className="flex items-center gap-4 md:mt-0 w-full md:w-auto justify-between md:justify-end border-t border-slate-100 dark:border-slate-800 pt-4 md:border-t-0 md:pt-0">
+                  <div className="flex items-center border border-slate-200 dark:border-slate-800 rounded-lg overflow-hidden shrink-0">
+                    <button 
+                      onClick={() => updateQuantity(item.id, -1)}
+                      className="px-3 py-1 hover:bg-slate-50 dark:hover:bg-slate-800"
+                    >
+                      <span className="material-symbols-outlined text-sm">remove</span>
+                    </button>
+                    <span className="w-8 text-center text-sm font-bold">{item.quantity}</span>
+                    <button 
+                      onClick={() => updateQuantity(item.id, 1)}
+                      className="px-3 py-1 hover:bg-slate-50 dark:hover:bg-slate-800"
+                    >
+                      <span className="material-symbols-outlined text-sm">add</span>
+                    </button>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <p className="text-lg font-bold">${item.price * item.quantity}.00</p>
+                    <p className="text-xs text-slate-400">${item.price}.00 c/u</p>
+                  </div>
                 </div>
               </div>
             ))}

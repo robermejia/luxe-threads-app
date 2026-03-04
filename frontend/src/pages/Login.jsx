@@ -19,7 +19,7 @@ const Login = () => {
   };
 
   return (
-    <div className="relative min-h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden py-12 px-6">
+    <div className="relative min-h-[calc(100vh-80px)] flex flex-col items-center justify-center overflow-hidden py-12 px-4 sm:px-6">
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px]"></div>
@@ -34,7 +34,7 @@ const Login = () => {
           <p className="text-slate-500 dark:text-slate-400 text-sm">Ingresa tus credenciales para acceder a tu cuenta.</p>
         </header>
 
-        <div className="glass-panel p-8 lg:p-10 rounded-2xl shadow-2xl">
+        <div className="glass-panel p-6 sm:p-8 lg:p-10 rounded-2xl shadow-2xl">
           <form className="space-y-6" onSubmit={handleSubmit}>
             {error && (
               <div className="bg-red-500/10 border border-red-500/20 text-red-500 text-xs py-3 px-4 rounded-xl text-center font-bold">
@@ -99,7 +99,7 @@ const Login = () => {
               <div className="flex-grow border-t border-slate-200 dark:border-white/5"></div>
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
+            <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
               <button 
                 onClick={() => loginWithGoogle()}
                 disabled={loading}

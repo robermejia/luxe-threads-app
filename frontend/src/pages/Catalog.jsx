@@ -42,7 +42,7 @@ const Catalog = () => {
   }, [category, search, priceRange]);
 
   return (
-    <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-8 px-6 lg:px-20 py-8">
+    <div className="max-w-[1440px] mx-auto flex flex-col lg:flex-row gap-8 px-4 sm:px-6 lg:px-20 py-8">
       {/* Sidebar Filters */}
       <aside className="w-full lg:w-64 shrink-0 space-y-8">
         <div>
@@ -69,12 +69,12 @@ const Catalog = () => {
 
         <div>
           <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Talla</p>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="flex flex-wrap gap-2">
             {['S', 'M', 'L', 'XL', 'XXL'].map(size => (
               <button 
                 key={size} 
                 onClick={() => setSelectedSize(size)}
-                className={`py-2 text-xs font-bold rounded-lg border transition-all ${selectedSize === size ? 'bg-primary text-white border-primary' : 'border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary'}`}
+                className={`px-3 py-2 sm:px-4 text-xs font-bold rounded-lg border transition-all ${selectedSize === size ? 'bg-primary text-white border-primary' : 'border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary'}`}
               >
                 {size}
               </button>
@@ -116,8 +116,8 @@ const Catalog = () => {
               </button>
             )}
             <div className="flex items-center gap-2">
-              <span className="text-sm font-medium text-slate-400 whitespace-nowrap">Ordenar por:</span>
-              <select className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm font-semibold focus:ring-primary py-2 px-3 outline-none">
+              <span className="hidden sm:inline text-sm font-medium text-slate-400 whitespace-nowrap">Ordenar por:</span>
+              <select className="bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-xs sm:text-sm font-semibold focus:ring-primary py-2 px-2 sm:px-3 outline-none">
                 <option>Más recientes</option>
                 <option>Precio: Menor a Mayor</option>
                 <option>Precio: Mayor a Menor</option>
@@ -166,9 +166,9 @@ const Catalog = () => {
                     </div>
                     <button 
                       onClick={() => addToCart(product)}
-                      className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-xl text-sm font-bold transition-all transform active:scale-95 shadow-lg shadow-primary/20"
+                      className="flex items-center gap-1 sm:gap-2 bg-primary hover:bg-primary/90 text-white px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all transform active:scale-95 shadow-lg shadow-primary/20"
                     >
-                      <span className="material-symbols-outlined text-lg">add_shopping_cart</span> Añadir
+                      <span className="material-symbols-outlined text-base sm:text-lg">add_shopping_cart</span> Añadir
                     </button>
                   </div>
                 </div>

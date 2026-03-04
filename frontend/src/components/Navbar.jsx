@@ -9,24 +9,24 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-6 lg:px-20 py-4">
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between gap-8">
-        <div className="flex items-center gap-3">
+    <header className="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-4 sm:px-6 lg:px-20 py-4">
+      <div className="max-w-[1440px] mx-auto flex items-center justify-between gap-4 lg:gap-8">
+        <div className="flex items-center gap-2 sm:gap-3">
           <div className="bg-primary text-white p-2 rounded-lg">
             <span className="material-symbols-outlined block text-2xl">checkroom</span>
           </div>
-          <Link to="/" className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
+          <Link to="/" className="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white">
             LUXE<span className="text-primary">THREADS</span>
           </Link>
         </div>
         
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center lg:gap-6 xl:gap-8">
           <Link to="/" className="text-sm font-semibold hover:text-primary transition-colors">Catálogo</Link>
           <Link to="/about" className="text-sm font-semibold hover:text-primary transition-colors">Nosotros</Link>
           <Link to="/contact" className="text-sm font-semibold hover:text-primary transition-colors">Contacto</Link>
         </nav>
 
-        <div className="flex items-center gap-4 flex-1 justify-end">
+        <div className="flex items-center gap-2 sm:gap-4 flex-1 justify-end">
           <Link to="/cart" className="relative p-2 bg-slate-100 dark:bg-slate-800 rounded-lg hover:bg-primary/10 hover:text-primary transition-all">
             <span className="material-symbols-outlined text-2xl">shopping_cart</span>
             <span className="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold h-5 w-5 rounded-full flex items-center justify-center border-2 border-white dark:border-background-dark">

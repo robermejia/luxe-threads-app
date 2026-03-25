@@ -15,7 +15,7 @@
 - **🌐 Demo en Vivo:** [Luxe Threads Frontend (Render)](https://luxethreads-frontend.onrender.com/)
 - **📸 Vista Previa del Diseño:** 
 
-![Luxe Threads Preview](https://robermejia.com/img/portfolio/large/project-21/2.png)
+![Luxe Threads Preview](https://robermejia.com/img/portfolio/large/project-13/2.png)
 
 ---
 

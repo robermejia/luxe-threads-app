@@ -21,7 +21,7 @@ public class FirebaseConfig {
             FirebaseOptions options;
 
             if (serviceAccountJson != null && !serviceAccountJson.isEmpty()) {
-                options = new FirebaseOptions.Builder()
+                options = FirebaseOptions.builder()
                         .setCredentials(GoogleCredentials.fromStream(
                                 new java.io.ByteArrayInputStream(serviceAccountJson.getBytes())))
                         .build();
@@ -32,7 +32,7 @@ public class FirebaseConfig {
                     throw new IOException(
                             "Firebase serviceAccountKey.json not found in resources and FIREBASE_SERVICE_ACCOUNT env var is empty.");
                 }
-                options = new FirebaseOptions.Builder()
+                options = FirebaseOptions.builder()
                         .setCredentials(GoogleCredentials.fromStream(resource.getInputStream()))
                         .build();
                 System.out.println("Firebase initialized from serviceAccountKey.json file.");

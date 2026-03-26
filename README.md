@@ -13,6 +13,7 @@
 ## 🚀 Enlaces del Proyecto
 
 - **🌐 Demo en Vivo:** [Luxe Threads Frontend (Render)](https://luxethreads-frontend.onrender.com/)
+  > **Nota Técnica:** ⏳ *Cold Start* del Backend. Debido a que la API (backend) está alojada en el plan gratuito de Render, el servidor entra en estado de suspensión tras un periodo de inactividad. Al realizar la primera petición (como cargar el catálogo inicialmente), puedes experimentar un tiempo de carga **aproximado de 30 a 50 segundos** mientras la instancia se reactiva. Las peticiones posteriores responderán de manera normal y rápida.
 - **📸 Vista Previa del Diseño:** 
 
 ![Luxe Threads Preview](https://robermejia.com/img/portfolio/large/project-13/2.png)

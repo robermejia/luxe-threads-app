@@ -90,6 +90,16 @@ El servidor backend estará mapeado en el puerto asignado (típicamente `8080`).
 
 > ⚠️ **Nota:** Asegúrate de agregar tus variables de entorno pertinentes en archivos `.env` (si lo requiere el Frontend o la inicialización de Firebase).
 
+
+---
+
+## 🔑 Credenciales de Prueba (Testing Credentials)
+
+Para acceder al panel de administración o probar la aplicación, puedes utilizar las siguientes credenciales:
+
+- **Usuario:** `admin@luxethreads.com`
+- **Contraseña:** `admin123`
+
 ---
 
 ## ✨ Estado del Proyecto

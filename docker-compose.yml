@@ -1,0 +1,39 @@
+services:
+  # Backend Spring Boot Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: luxethreads-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - FIREBASE_SERVICE_ACCOUNT=${FIREBASE_SERVICE_ACCOUNT:-}
+    env_file:
+      - path: .env
+        required: false
+    restart: unless-stopped
+
+  # Frontend Vite + Nginx Service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:8080}
+        VITE_FIREBASE_API_KEY: ${VITE_FIREBASE_API_KEY:-}
+        VITE_FIREBASE_AUTH_DOMAIN: ${VITE_FIREBASE_AUTH_DOMAIN:-}
+        VITE_FIREBASE_PROJECT_ID: ${VITE_FIREBASE_PROJECT_ID:-}
+        VITE_FIREBASE_STORAGE_BUCKET: ${VITE_FIREBASE_STORAGE_BUCKET:-}
+        VITE_FIREBASE_MESSAGING_SENDER_ID: ${VITE_FIREBASE_MESSAGING_SENDER_ID:-}
+        VITE_FIREBASE_APP_ID: ${VITE_FIREBASE_APP_ID:-}
+    container_name: luxethreads-frontend
+    ports:
+      - "3000:80"
+    env_file:
+      - path: .env
+        required: false
+    depends_on:
+      - backend
+    restart: unless-stopped
